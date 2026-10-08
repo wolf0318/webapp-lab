@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<!-- 만든 앱을 띄우는 칸. maker.html이 sandbox(allow-same-origin 없음)로 엽니다.
+     - 이 문서는 사이트와 다른 '빈 출처'가 되어, 사이트에 저장된 키·기록을 읽을 수 없어요.
+     - 아래 규칙으로 앱은 인터넷에 연결하거나 바깥 파일을 불러올 수 없어요. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval'; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; media-src data: blob:; connect-src 'none'; frame-src 'none'; worker-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="robots" content="noindex">
+<title>미리보기</title>
+<style>body{margin:0;display:grid;place-items:center;min-height:100vh;font-family:system-ui,sans-serif;color:#6B6889;background:#fff}</style>
+</head>
+<body>
+<p>앱을 불러오는 중…</p>
+<script>
+(function () {
+  'use strict';
+  // 앱 안에서 쓸 수 있게 하는 대신 저장은 하지 않는 저장소(빈 출처에서는 진짜 저장소를 쓸 수 없어요)
+  var SHIM = '<script>(function(){' +
+    'function M(){var d={};return{getItem:function(k){k=String(k);return Object.prototype.hasOwnProperty.call(d,k)?d[k]:null},setItem:function(k,v){d[String(k)]=String(v)},removeItem:function(k){delete d[String(k)]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null},get length(){return Object.keys(d).length}}}' +
+    '["localStorage","sessionStorage"].forEach(function(n){var ok=false;try{ok=!!window[n];window[n].length}catch(e){ok=false}if(!ok){try{Object.defineProperty(window,n,{value:M(),configurable:true})}catch(e){}}});' +
+    'var sent=0;function tell(m){if(sent>20)return;sent++;try{parent.postMessage({lab:"err",msg:String(m).slice(0,300)},"*")}catch(e){}}' +
+    'window.addEventListener("error",function(e){tell((e.message||"오류")+(e.lineno?" (줄 "+e.lineno+")":""))});' +
+    'window.addEventListener("unhandledrejection",function(e){tell("처리하지 못한 오류: "+(e.reason&&e.reason.message||e.reason))});' +
+    'document.addEventListener("securitypolicyviolation",function(e){tell("바깥 주소는 쓸 수 없어요: "+(e.blockedURI||e.violatedDirective))});' +
+    '})();<\/script>';
+
+  function inject(html) {
+    var m = html.match(/<head[^>]*>/i);
+    if (m) return html.slice(0, m.index + m[0].length) + SHIM + html.slice(m.index + m[0].length);
+    m = html.match(/<html[^>]*>/i);
+    if (m) return html.slice(0, m.index + m[0].length) + SHIM + html.slice(m.index + m[0].length);
+    return SHIM + html;
+  }
+
+  var done = false;
+  window.addEventListener('message', function (e) {
+    if (done || e.source !== window.parent || !e.data || e.data.lab !== 'run' || typeof e.data.html !== 'string') return;
+    done = true;
+    var html = inject(e.data.html);
+    document.open();
+    document.write(html);
+    document.close();
+  });
+  parent.postMessage({ lab: 'ready' }, '*');
+})();
+</script>
+</body>
+</html>

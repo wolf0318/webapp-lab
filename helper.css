@@ -1,0 +1,34 @@
+.steps{list-style:none;margin:0 0 18px;padding:0;display:flex;gap:10px;flex-wrap:wrap}
+.steps li{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 16px 6px 6px;font-size:15px}
+.steps b{width:28px;height:28px;border-radius:50%;background:var(--indigo);color:#fff;display:grid;place-items:center;font-size:14px;flex:none}
+.grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;align-items:start}
+.pane{padding:20px}
+.pane h2{font-size:18px;margin:0}
+.pane-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 16px}
+.presets{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.presets .lab{font-size:13px;color:var(--muted);font-weight:700;margin-right:2px}
+.preset-note{margin:-6px 0 16px;background:var(--tint);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--ink2)}
+.side{display:grid;gap:20px;position:sticky;top:16px}
+.result .prompt{background:#FBFAFF;border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.75;min-height:120px;margin:0 0 12px;word-break:keep-all;overflow-wrap:anywhere}
+.count{font-size:13px;color:var(--muted)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.actions .btn{flex:1 1 160px}
+.how{margin-top:10px;font-size:14.5px}
+.how summary{cursor:pointer;font-weight:700;color:var(--ink2);padding:6px 0}
+.how ol{margin:6px 0 0;padding-left:20px}
+.how li{margin:0 0 4px}
+.demo .demo-text{font-size:14px;line-height:1.65;color:var(--ink2);background:#FFFBF2;border:1px dashed #F0C674;border-radius:10px;padding:10px 12px;margin:0 0 8px;max-height:150px;overflow:auto}
+.after h2{margin-bottom:12px}
+.checklist{margin:0 0 10px;padding-left:22px;font-size:14.5px}
+.checklist li{margin:0 0 6px}
+.checklist b{color:var(--ink2);margin-right:6px}
+.linkbtn{background:none;border:0;color:var(--indigo-d);text-decoration:underline;cursor:pointer;padding:4px;font-size:13px}
+.mbar{display:none}
+@media (max-width:960px){
+  .grid{grid-template-columns:1fr}
+  .side{position:static}
+  .mbar{display:flex;gap:8px;position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--line);z-index:20}
+  .mbar .btn{flex:1}
+  body{padding-bottom:76px}
+  .toast{bottom:90px}
+}

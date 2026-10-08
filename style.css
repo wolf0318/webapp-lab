@@ -1,0 +1,104 @@
+/* 수업 웹앱 공방 — 4차시 PPT와 같은 색 */
+:root{
+  --ink:#1F1B3A; --ink2:#2A2463; --muted:#6B6889; --line:#E4E0F5; --paper:#FFFFFF; --bg:#F6F4FF; --tint:#F2F0FF;
+  --indigo:#6C5CE7; --indigo-d:#5546C9; --lav:#B4A9F8; --orange:#F5A623; --teal:#12A594; --red:#E5484D;
+  --c-std:#5546C9; --c-act:#B86E00; --c-quiz:#A0397A; --c-screen:#0E8475; --c-intro:#4A4766;
+  --r:14px; --shadow:0 1px 2px rgba(31,27,58,.06),0 6px 20px rgba(31,27,58,.07);
+  --font:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{font-family:var(--font);color:var(--ink);background:var(--bg);font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
+a{color:var(--indigo-d)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* 위 띠 */
+.top{background:var(--ink2);color:#fff;padding:14px 20px}
+.top .in{max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.logo{width:40px;height:40px;border-radius:12px;background:var(--indigo);display:grid;place-items:center;flex:none;box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.logo svg{width:24px;height:24px}
+.top h1{font-size:20px;margin:0;letter-spacing:-.3px}
+.top p{margin:0;color:var(--lav);font-size:14px}
+.top .nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.top .nav a{color:#fff;text-decoration:none;font-size:14px;padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.28)}
+.top .nav a[aria-current]{background:#fff;color:var(--ink2);border-color:#fff;font-weight:700}
+
+.wrap{max-width:1240px;margin:0 auto;padding:20px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:11px 18px;font-weight:700;cursor:pointer;background:var(--indigo);color:#fff;text-decoration:none;min-height:44px;line-height:1.2}
+.btn:hover{background:var(--indigo-d)}
+.btn.ghost{background:#fff;color:var(--ink2);border:1.5px solid var(--line)}
+.btn.ghost:hover{border-color:var(--lav);background:var(--tint)}
+.btn.orange{background:var(--orange);color:var(--ink)}
+.btn.orange:hover{background:#E4950F}
+.btn.sm{min-height:36px;padding:7px 12px;font-size:14px;border-radius:10px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* 칸 */
+.fs{border-left:5px solid var(--c-intro);padding:2px 0 4px 16px;margin:0 0 22px}
+.fs h3{margin:0 0 10px;font-size:16px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.fs h3 small{font-weight:400;color:var(--muted);font-size:13px}
+.fs h3 .dot{display:none}
+.fs-std{border-color:var(--c-std)} .fs-std h3{color:var(--c-std)}
+.fs-act{border-color:var(--c-act)} .fs-act h3{color:var(--c-act)}
+.fs-quiz{border-color:var(--c-quiz)} .fs-quiz h3{color:var(--c-quiz)}
+.fs-screen{border-color:var(--c-screen)} .fs-screen h3{color:var(--c-screen)}
+.fs label{display:block;margin:0 0 10px}
+.fs label>span{display:block;font-size:13px;font-weight:700;color:var(--muted);margin:0 0 4px}
+.fs label>span em{font-style:normal;font-weight:400}
+.fs input,.fs select,.fs textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:9px 11px;background:#fff;font-size:16px;min-height:44px}
+.fs textarea{resize:vertical;line-height:1.5}
+.fs input:focus,.fs select:focus,.fs textarea:focus{border-color:var(--indigo);outline:none;box-shadow:0 0 0 3px rgba(108,92,231,.16)}
+.fs input::placeholder,.fs textarea::placeholder{color:#A7A3BF}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row>label{margin-bottom:10px}
+.row .mini{flex:0 0 110px}
+.row .grow{flex:1 1 160px}
+.row .code{flex:0 1 220px}
+.frame{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 10px}
+.frame .fx{font-weight:700;color:var(--ink2);white-space:nowrap}
+.frame input{flex:1 1 220px;width:auto}
+.frame select{flex:0 1 160px;width:auto}
+.check{display:flex!important;align-items:center;gap:10px;font-weight:700;cursor:pointer;margin-bottom:12px!important}
+.check input{width:22px;height:22px;min-height:0;accent-color:var(--c-quiz);flex:none}
+.quizbox.off{opacity:.4;pointer-events:none}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1.5px dashed #D9B8CB;background:#FFF7FB;color:var(--c-quiz);border-radius:999px;padding:6px 12px;font-size:13.5px;cursor:pointer;text-align:left;line-height:1.35}
+.chip:hover{border-style:solid;background:#FCEAF3}
+.hint{margin:-2px 0 0;font-size:13.5px;color:var(--muted)}
+
+/* 미리보기 조각 색 */
+.pp{border-radius:4px}
+.pp-intro{color:var(--c-intro)}
+.pp-std{color:var(--c-std);font-weight:700}
+.pp-act{color:var(--c-act);font-weight:700}
+.pp-quiz{color:var(--c-quiz);font-weight:700}
+.pp-screen{color:var(--c-screen);font-weight:700}
+
+.warns{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.warns li{font-size:14px;padding:8px 10px 8px 34px;border-radius:10px;position:relative;line-height:1.45}
+.warns li::before{position:absolute;left:10px;top:8px;font-weight:800}
+.warns .need{background:#FFF4E0;color:#7A4B00}.warns .need::before{content:'!';color:#B86E00}
+.warns .warn{background:#FDECEC;color:#8F1F23}.warns .warn::before{content:'!';color:var(--red)}
+.warns .tip{background:var(--tint);color:var(--ink2)}.warns .tip::before{content:'i';color:var(--indigo)}
+.warns .ok{background:#E6F6F3;color:#0B5E54}.warns .ok::before{content:'✓';color:var(--teal)}
+
+.toast{position:fixed;left:0;right:0;margin:0 auto;width:fit-content;bottom:24px;transform:translateY(20px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-size:15px;opacity:0;pointer-events:none;transition:.2s;z-index:50;max-width:min(640px,calc(100% - 32px));text-align:center}
+.toast.on{opacity:1;transform:none}
+
+footer.foot{max-width:1240px;margin:0 auto;padding:8px 20px 40px;color:var(--muted);font-size:13px}
+
+@media (max-width:640px){
+  .top{padding:12px 16px}
+  .top h1{font-size:18px}
+  .top .nav{margin-left:0;width:100%}
+  .wrap{padding:14px 16px}
+  .row .mini{flex:1 1 calc(50% - 5px)}
+  .row .code{flex:1 1 100%}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
